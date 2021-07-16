@@ -17,8 +17,7 @@ const AlbumVideos({Key? key, required String vidUrl}) : super(key: key);
 class _AlbumVideosState extends State<AlbumVideos> {
   
 
-  late String vidUrl;
-  //= 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4';
+  late String vidUrl= 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4';
   @override
   Widget build(BuildContext context) {
     
