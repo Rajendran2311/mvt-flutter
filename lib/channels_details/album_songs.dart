@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:mvt/video_player_details/album_videos.dart';
 
 // ignore: camel_case_types
@@ -28,26 +29,55 @@ class _Album_Songs_ListState extends State<Album_Songs_List> {
     'MVT'
   ];
 
-  // String vidUrl =
-  //         'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4';
-late String vidUrl;
-  // Function currentVideo = (index) {
-  //   late String vidUrl;
+  late String vidUrl;
+
+  var index;
+
+  // Function currentVideo = (index, context) {
   //   if (index == 0) {
-  //     vidUrl =
+  //     String uri =
   //         'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4';
-  //     return AlbumVideos();
-      
+  //     Navigator.push(
+  //       context,
+  //       MaterialPageRoute(
+  //         builder: (context) => AlbumVideos(vidUrl: uri),
+  //       ),
+  //     );
   //   }
   // };
-// Future <void> currentVideo (index)async{
-//   setState(() {
-//      vidUrl =
-//           'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4';
-      
-//   });
-//   return AlbumVideos(vidUrl:vidUrl);
-// }
+  void currentVideo(BuildContext context, index) {
+    if (index == 0) {
+      String uri =
+          'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4';
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => AlbumVideos(vidUrl: uri),
+        ),
+      );
+    }
+    if (index == 1) {
+      String uri =
+          'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => AlbumVideos(vidUrl: uri),
+        ),
+      );
+    }
+    if (index == 3) {
+      String uri =
+          'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4';
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => AlbumVideos(vidUrl: uri),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -100,22 +130,22 @@ late String vidUrl;
                                   fit: BoxFit.cover,
                                   child: InkWell(
                                     onTap: () {
-                                      
-                                      setState(() {
-                                        print(index);
-                                        // ignore: unused_local_variable
-                                        vidUrl='https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4';
-                                         print(vidUrl);
-                                         Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => AlbumVideos(vidUrl:vidUrl),));
-                                      });
+                                      currentVideo(context, index);
+
+                                      //   setState(() {
+                                      //     print(index);
+                                      //     // ignore: unused_local_variable
+                                      //     vidUrl='https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4';
+                                      //      print(vidUrl);
+                                      //      Navigator.of(context).push(MaterialPageRoute(
+                                      // builder: (context) => AlbumVideos(vidUrl:vidUrl),));
+                                      //   });
                                       // Navigator.of(context)
                                       //     .push(MaterialPageRoute(
                                       //   builder: (context) =>
-                                            
 
-                                            //AlbumVideos(print(currentTab); ,);
-                                            //Navigator.push(context, new MaterialPageRoute(builder: (context) => new AlbumVideos( vidUrl: new Album_Songs_List( 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',))));
+                                      //AlbumVideos(print(currentTab); ,);
+                                      //Navigator.push(context, new MaterialPageRoute(builder: (context) => new AlbumVideos( vidUrl: new Album_Songs_List( 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',))));
                                       //));
                                     },
                                   ),

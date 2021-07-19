@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mvt/home_page.dart';
 
-import 'channels_page.dart';
-import 'interview_page.dart';
 import 'main_page.dart';
 import 'podcast_page.dart';
 

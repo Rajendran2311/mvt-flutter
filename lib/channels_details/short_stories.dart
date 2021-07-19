@@ -28,6 +28,40 @@ class _ShortStories_ListState extends State<ShortStories_List> {
     'MVT'
   ];
 late String vidUrl;
+void currentVideos(BuildContext context, index){
+  
+      if(index==0){
+ String uri =
+          'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4';
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => AlbumVideos(vidUrl: uri),
+        ),
+      );
+      }
+       if(index==1){
+ String uri =
+          'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => AlbumVideos(vidUrl: uri),
+        ),
+      );
+      }
+       if(index==3){
+ String uri =
+          'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4';
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => AlbumVideos(vidUrl: uri),
+        ),
+      );
+      }
+
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,14 +114,15 @@ late String vidUrl;
                                   fit: BoxFit.cover,
                                   child: InkWell(
                                     onTap: () {
-                                       setState(() {
-                                        print(index);
-                                        // ignore: unused_local_variable
-                                        vidUrl='https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4';
-                                         print(vidUrl);
-                                         Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => AlbumVideos(vidUrl:vidUrl),));
-                                      });
+                                      currentVideos(context,index);
+                                    //    setState(() {
+                                    //     print(index);
+                                    //     // ignore: unused_local_variable
+                                    //     vidUrl='https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4';
+                                    //      print(vidUrl);
+                                    //      Navigator.of(context).push(MaterialPageRoute(
+                                    // builder: (context) => AlbumVideos(vidUrl:vidUrl),));
+                                    //   });
                                       // setState(() {
                                       //   late String vidUrl='https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4';
                                       // });

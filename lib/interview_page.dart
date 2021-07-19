@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'drawer.dart';
+
 // ignore: camel_case_types
 class Interview_Page extends StatefulWidget {
   
