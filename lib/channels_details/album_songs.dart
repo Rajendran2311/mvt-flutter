@@ -132,21 +132,6 @@ class _Album_Songs_ListState extends State<Album_Songs_List> {
                                     onTap: () {
                                       currentVideo(context, index);
 
-                                      //   setState(() {
-                                      //     print(index);
-                                      //     // ignore: unused_local_variable
-                                      //     vidUrl='https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4';
-                                      //      print(vidUrl);
-                                      //      Navigator.of(context).push(MaterialPageRoute(
-                                      // builder: (context) => AlbumVideos(vidUrl:vidUrl),));
-                                      //   });
-                                      // Navigator.of(context)
-                                      //     .push(MaterialPageRoute(
-                                      //   builder: (context) =>
-
-                                      //AlbumVideos(print(currentTab); ,);
-                                      //Navigator.push(context, new MaterialPageRoute(builder: (context) => new AlbumVideos( vidUrl: new Album_Songs_List( 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',))));
-                                      //));
                                     },
                                   ),
                                 ),

@@ -28,6 +28,38 @@ class _Award_ShowState extends State<Award_Show> {
     'MVT'
   ];
 late String vidUrl;
+ void currentVideo(BuildContext context, index) {
+    if (index == 0) {
+      String uri =
+          'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4';
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => AlbumVideos(vidUrl: uri),
+        ),
+      );
+    }
+    if (index == 1) {
+      String uri =
+          'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => AlbumVideos(vidUrl: uri),
+        ),
+      );
+    }
+    if (index == 2) {
+      String uri =
+          'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4';
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => AlbumVideos(vidUrl: uri),
+        ),
+      );
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,18 +111,8 @@ late String vidUrl;
                                   ),
                                   fit: BoxFit.cover,
                                   child: InkWell(
-                                    onTap: () {
-                                       setState(() {
-                                        print(index);
-                                        // ignore: unused_local_variable
-                                        vidUrl='https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4';
-                                         print(vidUrl);
-                                         Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => AlbumVideos(vidUrl:vidUrl),));
-                                      });
-                                  //     Navigator.of(context).push(MaterialPageRoute(
-                                  //   builder: (context) => AlbumVideos(),
-                                  // ));
+                                    onTap: () {currentVideo(context, index);
+                                       
                                   },
                                   ),
                                 ),
