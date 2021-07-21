@@ -4,6 +4,7 @@ void main() {
   runApp(MyApp());
 }
 
+// ignore: must_be_immutable
 class MyApp extends StatelessWidget {
   late int currentTab=0;
   @override

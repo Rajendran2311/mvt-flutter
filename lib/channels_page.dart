@@ -3,9 +3,10 @@ import 'dart:ui';
 import 'channels_details/album_songs.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'channels_details/interview_videos.dart';
+import 'channels_details/padcast_videos.dart';
 import 'channels_details/short_stories.dart';
 import 'channels_details/award_show.dart';
-import 'drawer.dart';
 import 'interview_page.dart';
 import 'podcast_page.dart';
 
@@ -54,12 +55,12 @@ class _Channels_PageState extends State<Channels_Page> {
    }
    if(index==3){
      return 
-     Interview_Page();
+     InterviewVideos(index);
 
    }
    if(index==4){
      return 
-     Podcast_Page();
+     PadcastVideos(index);
 
    }
 

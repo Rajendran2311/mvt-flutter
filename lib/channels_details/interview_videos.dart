@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
 
-import 'video_player_details/album_videos.dart';
+import 'package:mvt/video_player_details/album_videos.dart';
 
-// ignore: camel_case_types
-class Interview_Page extends StatefulWidget {
-  @override
-  _Interview_PageState createState() => _Interview_PageState();
-}
+// ignore: must_be_immutable
+class InterviewVideos extends StatelessWidget {
+  InterviewVideos(index, {Key? key}) : super(key: key);
 
-// ignore: camel_case_types
-class _Interview_PageState extends State<Interview_Page> {
-// ignore: non_constant_identifier_names
+  // ignore: non_constant_identifier_names
   final List<String> list_of_interviews = [
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS19xm0Rcm2STTCA8Nabm30lkWYWrYYCcBoOw&usqp=CAU",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWqaNUkxQwARKGKwYzp_dwi7UQWAtrjp6Bkw&usqp=CAU",
@@ -63,18 +59,21 @@ class _Interview_PageState extends State<Interview_Page> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //  appBar: AppBar(
-      //     title: Text(
-      //       'MVT',
-      //       style: TextStyle(color: Colors.orange),
-      //     ),
-      //     centerTitle: true,
-      //     //leading: Icon(Icons.dehaze_sharp,color: Colors.black,),
-      //     actions: [Icon(Icons.search, color: Colors.black)],
-      //     backgroundColor: Colors.white,
-      //     iconTheme: IconThemeData(color: Colors.black),
-      //   ),
-      //   drawer: MainDrawer(),
+      appBar: AppBar(
+        title: Text(
+          'INTERVIEW',
+          style: TextStyle(color: Colors.orange),
+        ),
+        centerTitle: true,
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back_ios_new,
+            color: Colors.black,
+          ),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        backgroundColor: Colors.white,
+      ),
       body: CustomScrollView(
         slivers: [
           SliverGrid(
@@ -122,12 +121,12 @@ class _Interview_PageState extends State<Interview_Page> {
                             ],
                           )),
                       Align(
-                        alignment: Alignment.bottomLeft,
-                        child: new Text(
-                          title_of_interview[index % title_of_interview.length],
-                          style: TextStyle(fontSize: 20, color: Colors.black),
-                        ),
-                      ),
+                          alignment: Alignment.bottomLeft,
+                          child: new Text(
+                            title_of_interview[
+                                index % title_of_interview.length],
+                            style: TextStyle(fontSize: 20, color: Colors.black),
+                          )),
                     ],
                   ),
                 );
