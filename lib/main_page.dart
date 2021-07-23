@@ -14,12 +14,13 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   int currentTab = 0;
-  final List<Widget> screens = [
-    Home_Page(),
-    Interview_Page(),
-    Channels_Page(),
-    Podcast_Page(),
-  ];
+  // final List<Widget> screens = [
+  //   Home_Page(),
+  //   Interview_Page(),
+  //   Channels_Page(),
+  //   Podcast_Page(),
+  // ];
+  
   final PageStorageBucket bucket = PageStorageBucket();
   Widget currentScreen = Home_Page();
   @override

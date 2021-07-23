@@ -7,8 +7,6 @@ import 'channels_details/interview_videos.dart';
 import 'channels_details/padcast_videos.dart';
 import 'channels_details/short_stories.dart';
 import 'channels_details/award_show.dart';
-import 'interview_page.dart';
-import 'podcast_page.dart';
 
 // ignore: camel_case_types
 class Channels_Page extends StatefulWidget {
@@ -37,38 +35,29 @@ class _Channels_PageState extends State<Channels_Page> {
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgqWW4gh0qOWRkvQNwkkvivFFAFwuJ_n0Uag&usqp=CAU"
   ];
 
- int currentpage = 0;
+  int currentpage = 0;
 
   var index;
- Function currentSlide=(index){
-   if(index==0){
-     return
-     Album_Songs_List(index);
-   }
-   if(index==1){
-     return
-      ShortStories_List(index);
-   }
-   if(index==2){
-     return
-      Award_Show(index);
-   }
-   if(index==3){
-     return 
-     InterviewVideos(index);
-
-   }
-   if(index==4){
-     return 
-     PadcastVideos(index);
-
-   }
-
- };
+  Function currentSlide = (index) {
+    if (index == 0) {
+      return Album_Songs_List(index);
+    }
+    if (index == 1) {
+      return ShortStories_List(index);
+    }
+    if (index == 2) {
+      return Award_Show(index);
+    }
+    if (index == 3) {
+      return InterviewVideos(index);
+    }
+    if (index == 4) {
+      return PadcastVideos(index);
+    }
+  };
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       body: CustomScrollView(
         slivers: [
           SliverGrid(
@@ -80,15 +69,14 @@ class _Channels_PageState extends State<Channels_Page> {
             ),
             delegate: SliverChildBuilderDelegate(
               (BuildContext context, int index) {
-                
                 return Padding(
-                    padding: EdgeInsets.all(6),
+                    padding: EdgeInsets.all(10),
                     child: Container(
                         decoration: BoxDecoration(
                             borderRadius: const BorderRadius.all(
-                                const Radius.circular(20))),
+                                const Radius.circular(20.0))),
                         child: Stack(
-                          alignment: Alignment.center,
+                          alignment: Alignment.centerRight,
                           children: [
                             Ink.image(
                               image: NetworkImage(
@@ -97,13 +85,10 @@ class _Channels_PageState extends State<Channels_Page> {
                               fit: BoxFit.cover,
                               child: InkWell(
                                 onTap: () {
-                                //   setState(() {
-                                //   print(index);
-                                // });
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) =>currentSlide(index) ,
-                                    
-                                  ),
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) => currentSlide(index),
+                                    ),
                                   );
                                 },
                               ),

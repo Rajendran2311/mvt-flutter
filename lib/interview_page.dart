@@ -15,46 +15,58 @@ class _Interview_PageState extends State<Interview_Page> {
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS19xm0Rcm2STTCA8Nabm30lkWYWrYYCcBoOw&usqp=CAU",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWqaNUkxQwARKGKwYzp_dwi7UQWAtrjp6Bkw&usqp=CAU",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOhSkdoj1RaMpwts1ZU3HAGQWps2IQt9jM3w&usqp=CAU",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTA4lIOF9Io_CVG_tjfaYIkPQ4TOgOanuBYJA&usqp=CAU",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgqWW4gh0qOWRkvQNwkkvivFFAFwuJ_n0Uag&usqp=CAU"
   ];
   // ignore: non_constant_identifier_names
   final List<String> title_of_interview = [
     "MIFF-2021",
     "MMM",
     'M 2020',
-    'MVT 2021',
-    'MVT'
   ];
-  late String vidUrl;
+  // late String vidUrl;
+  // late String relatedUrl1;
   void currentVideo(BuildContext context, index) {
     if (index == 0) {
-      String uri =
-          'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4';
+      final data = RelatedVidoes(
+          vidUrl:
+              'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+          relatedUrl1:
+              'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
+          relatedUrl2:
+              'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4');
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => AlbumVideos(vidUrl: uri),
+          builder: (context) => AlbumVideos(data: data),
         ),
       );
     }
     if (index == 1) {
-      String uri =
-          'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
+      final data = RelatedVidoes(
+          vidUrl:
+              'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+          relatedUrl1:
+              'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+          relatedUrl2:
+              'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4');
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => AlbumVideos(vidUrl: uri),
+          builder: (context) => AlbumVideos(data: data),
         ),
       );
     }
-    if (index == 3) {
-      String uri =
-          'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4';
+    if (index == 2) {
+      final data = RelatedVidoes(
+          vidUrl:
+              'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
+          relatedUrl1:
+              'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+          relatedUrl2:
+              'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4');
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => AlbumVideos(vidUrl: uri),
+          builder: (context) => AlbumVideos(data: data),
         ),
       );
     }
@@ -139,4 +151,14 @@ class _Interview_PageState extends State<Interview_Page> {
       ),
     );
   }
+}
+
+class RelatedVidoes {
+  late String vidUrl;
+  late String relatedUrl1;
+  late String relatedUrl2;
+  RelatedVidoes(
+      {required this.relatedUrl1,
+      required this.vidUrl,
+      required this.relatedUrl2});
 }

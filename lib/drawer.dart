@@ -4,14 +4,43 @@ import 'main_page.dart';
 import 'podcast_page.dart';
 
 class MainDrawer extends StatefulWidget {
-  const MainDrawer({ Key? key }) : super(key: key);
+  const MainDrawer({Key? key}) : super(key: key);
 
   @override
   _MainDrawerState createState() => _MainDrawerState();
 }
 
 class _MainDrawerState extends State<MainDrawer> {
-  int currentTab=0;
+  int currentTab = 0;
+  // ignore: non_constant_identifier_names
+  void CurrentTab(BuildContext context, currentTab) {
+    if(currentTab==0){
+      Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => MainPage(currentTab: currentTab),
+                ));
+    }
+     if(currentTab==1){
+      Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => MainPage(currentTab: currentTab),
+                ));
+    }
+     if(currentTab==2){
+      Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => MainPage(currentTab: currentTab),
+                ));
+    }
+     if(currentTab==3){
+      Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => MainPage(currentTab: currentTab),
+                ));
+    }
+     if(currentTab==4){
+      Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => MainPage(currentTab: currentTab),
+                ));
+    }
+    
+  }
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -30,74 +59,86 @@ class _MainDrawerState extends State<MainDrawer> {
                     margin: EdgeInsets.only(top: 10),
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      image: DecorationImage(image: NetworkImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIQND6lOovzDcBzCIYL-eKPi4n2bQLEWP46g&usqp=CAU',
-                      ),
-                      fit: BoxFit.fill,
+                      image: DecorationImage(
+                        image: NetworkImage(
+                          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIQND6lOovzDcBzCIYL-eKPi4n2bQLEWP46g&usqp=CAU',
+                        ),
+                        fit: BoxFit.fill,
                       ),
                     ),
                   ),
-                  SizedBox(height: 10,),
-                  Text("RAJAN",style:TextStyle(fontSize: 25,color: Colors.white),),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    "RAJAN",
+                    style: TextStyle(fontSize: 25, color: Colors.white),
+                  ),
                 ],
               ),
             ),
           ),
           ListTile(
             leading: Icon(Icons.home),
-            title:Text('HOME',style: TextStyle(fontSize: 18),),
-            onTap: (){setState(() {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context)=>MainPage(currentTab:currentTab),
-                      )
-                      );
-                       currentTab = 0;print(currentTab);
-            });  },
+            title: Text(
+              'HOME',
+              style: TextStyle(fontSize: 18),
+            ),
+            onTap: () {
+              CurrentTab(context, currentTab=0);
+            },
           ),
           ListTile(
             leading: Icon(Icons.tv),
-            title:Text('CHANNELS',style: TextStyle(fontSize: 18),),
-            onTap: (){setState(() {currentTab = 1;
-              Navigator.of(context).push(MaterialPageRoute(builder: (context)=>MainPage(currentTab:currentTab),
-                      )
-                      );
-                       
-            });  },
+            title: Text(
+              'CHANNELS',
+              style: TextStyle(fontSize: 18),
+            ),
+            onTap: () {
+              CurrentTab(context, currentTab=1);
+            },
           ),
           ListTile(
             leading: Icon(Icons.monochrome_photos_outlined),
-            title:Text('Interview',style: TextStyle(fontSize: 18),),
-            onTap: (){setState(() {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context)=>MainPage(currentTab:currentTab),
-                      )
-                      );
-                       currentTab = 2;
-                       print(currentTab);
-            });  },
+            title: Text(
+              'Interview',
+              style: TextStyle(fontSize: 18),
+            ),
+            onTap: () {
+              
+                CurrentTab(context, currentTab=2);
+            },
           ),
           ListTile(
             leading: Icon(Icons.mic),
-            title:Text('Poacast',style: TextStyle(fontSize: 18),),
-            onTap: (){setState(() {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context)=>MainPage(currentTab:currentTab),
-                      )
-                      );
-                       currentTab = 3;
-            });  },
+            title: Text(
+              'Poacast',
+              style: TextStyle(fontSize: 18),
+            ),
+            onTap: () {
+             CurrentTab(context, currentTab=3);
+            },
           ),
           ListTile(
             leading: Icon(Icons.language),
-            title:Text('Language',style: TextStyle(fontSize: 18),),
-            onTap: (){Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Podcast_Page(),
-                      )
-                      );},
+            title: Text(
+              'Language',
+              style: TextStyle(fontSize: 18),
+            ),
+            onTap: () {
+              CurrentTab(context, currentTab=4);
+            },
           ),
           ListTile(
             leading: Icon(Icons.settings),
-            title:Text('setting',style: TextStyle(fontSize: 18),),
-            onTap: (){},
-          ),
+            title: Text(
+              'setting',
+              style: TextStyle(fontSize: 18),
+            ),
+            onTap: () {},
+          ), 
         ],
       ),
-      
     );
   }
 }

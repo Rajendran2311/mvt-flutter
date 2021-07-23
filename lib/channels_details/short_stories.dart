@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:mvt/interview_page.dart';
 import 'package:mvt/video_player_details/album_videos.dart';
 
 // ignore: camel_case_types
 class ShortStories_List extends StatefulWidget {
-  const ShortStories_List(index,  {Key? key}) : super(key: key);
+  const ShortStories_List(index, {Key? key}) : super(key: key);
 
   @override
   _ShortStories_ListState createState() => _ShortStories_ListState();
@@ -16,52 +17,62 @@ class _ShortStories_ListState extends State<ShortStories_List> {
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS19xm0Rcm2STTCA8Nabm30lkWYWrYYCcBoOw&usqp=CAU",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWqaNUkxQwARKGKwYzp_dwi7UQWAtrjp6Bkw&usqp=CAU",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOhSkdoj1RaMpwts1ZU3HAGQWps2IQt9jM3w&usqp=CAU",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTA4lIOF9Io_CVG_tjfaYIkPQ4TOgOanuBYJA&usqp=CAU",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgqWW4gh0qOWRkvQNwkkvivFFAFwuJ_n0Uag&usqp=CAU"
   ];
   // ignore: non_constant_identifier_names
   final List<String> title_of_ShortStories = [
     "MIFF-2021",
     "MMM",
     'M 2020',
-    'MVT 2021',
-    'MVT'
   ];
-late String vidUrl;
-void currentVideos(BuildContext context, index){
-  
-      if(index==0){
- String uri =
-          'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4';
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => AlbumVideos(vidUrl: uri),
-        ),
-      );
-      }
-       if(index==1){
- String uri =
-          'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => AlbumVideos(vidUrl: uri),
-        ),
-      );
-      }
-       if(index==3){
- String uri =
-          'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4';
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => AlbumVideos(vidUrl: uri),
-        ),
-      );
-      }
 
+  void currentVideo(BuildContext context, index) {
+    if (index == 0) {
+      final data = RelatedVidoes(
+          vidUrl:
+              'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+          relatedUrl1:
+              'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
+          relatedUrl2:
+              'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4');
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => AlbumVideos(data: data),
+        ),
+      );
+    }
+    if (index == 1) {
+      final data = RelatedVidoes(
+          vidUrl:
+              'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+          relatedUrl1:
+              'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+          relatedUrl2:
+              'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4');
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => AlbumVideos(data: data),
+        ),
+      );
+    }
+    if (index == 2) {
+      final data = RelatedVidoes(
+          vidUrl:
+              'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
+          relatedUrl1:
+              'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+          relatedUrl2:
+              'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4');
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => AlbumVideos(data: data),
+        ),
+      );
+    }
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -114,9 +125,8 @@ void currentVideos(BuildContext context, index){
                                   fit: BoxFit.cover,
                                   child: InkWell(
                                     onTap: () {
-                                      currentVideos(context,index);
-                                   
-                                  },
+                                      currentVideo(context, index);
+                                    },
                                   ),
                                 ),
                               ),
