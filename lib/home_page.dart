@@ -20,38 +20,38 @@ class Home_Page extends StatelessWidget {
   ];
   late String vidUrl;
 
-  void currentVideos(BuildContext context, index) {
-    if (index == 0) {
-      String uri =
-          'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4';
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => AlbumVideos(vidUrl: uri),
-        ),
-      );
-    }
-    if (index == 1) {
-      String uri =
-          'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => AlbumVideos(vidUrl: uri),
-        ),
-      );
-    }
-    if (index == 3) {
-      String uri =
-          'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4';
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => AlbumVideos(vidUrl: uri),
-        ),
-      );
-    }
-  }
+  // void currentVideos(BuildContext context, index) {
+  //   if (index == 0) {
+  //     String uri =
+  //         'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4';
+  //     Navigator.push(
+  //       context,
+  //       MaterialPageRoute(
+  //         builder: (context) => AlbumVideos(vidUrl: uri),
+  //       ),
+  //     );
+  //   }
+  //   if (index == 1) {
+  //     String uri =
+  //         'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
+  //     Navigator.push(
+  //       context,
+  //       MaterialPageRoute(
+  //         builder: (context) => AlbumVideos(vidUrl: uri),
+  //       ),
+  //     );
+  //   }
+  //   if (index == 3) {
+  //     String uri =
+  //         'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4';
+  //     Navigator.push(
+  //       context,
+  //       MaterialPageRoute(
+  //         builder: (context) => AlbumVideos(vidUrl: uri),
+  //       ),
+  //     );
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -92,9 +92,7 @@ class Home_Page extends StatelessWidget {
                 enlargeCenterPage: true,
               ),
             ),
-
             MyList(),
-
           ],
         ),
       ),
@@ -165,65 +163,66 @@ class MyList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(child:  ListView(
-      shrinkWrap: true,
-      children: [
-        Container(
-          width: double.infinity,
-          padding: EdgeInsets.all(4),
-          color: Colors.white,
-          margin: EdgeInsets.only(left: 8, right: 8, top: 8),
-          child: Text(
-            'Channels',
-            style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+    return SingleChildScrollView(
+      child: ListView(
+        shrinkWrap: true,
+        children: [
+          Container(
+            width: double.infinity,
+            padding: EdgeInsets.all(4),
+            color: Colors.white,
+            margin: EdgeInsets.only(left: 8, right: 8, top: 8),
+            child: Text(
+              'Channels',
+              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+            ),
           ),
-        ),
-        Container(
-          color: Colors.white,
-          margin: EdgeInsets.only(left: 8, right: 8),
-          height: 160,
-          child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: list_of_videos.length,
-              itemBuilder: (context, index) {
-                return Stack(
-                  alignment: Alignment.centerRight,
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        relatedvideo(context, index);
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.all(2.0),
-                        child: Card(
-                          color: Colors.black54,
-                          child: Column(
-                            children: [
-                              Image.network(
-                                network_images[index % network_images.length],
-                                width: 95,
-                                height: 145,
-                              ),
-                            ],
+          Container(
+            color: Colors.white,
+            margin: EdgeInsets.only(left: 8, right: 8),
+            height: 160,
+            child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: list_of_videos.length,
+                itemBuilder: (context, index) {
+                  return Stack(
+                    alignment: Alignment.centerRight,
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          relatedvideo(context, index);
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.all(2.0),
+                          child: Card(
+                            color: Colors.black54,
+                            child: Column(
+                              children: [
+                                Image.network(
+                                  network_images[index % network_images.length],
+                                  width: 95,
+                                  height: 145,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    Container(
-                      width: 90,
-                      child: Text(
-                        list_of_videos[index % list_of_videos.length],
-                        style: TextStyle(
-                            fontSize: 19, fontWeight: FontWeight.bold),
+                      Container(
+                        width: 90,
+                        child: Text(
+                          list_of_videos[index % list_of_videos.length],
+                          style: TextStyle(
+                              fontSize: 19, fontWeight: FontWeight.bold),
+                        ),
                       ),
-                    ),
-                  ],
-                );
-              }),
-        ),
-        CourseList(),
-      ],
-    ),
+                    ],
+                  );
+                }),
+          ),
+          CourseList(),
+        ],
+      ),
     );
   }
 }
@@ -233,24 +232,25 @@ class CourseList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(child:  ListView(
-      shrinkWrap: true,
-      children: [
-        Container(
-          width: double.infinity,
-          padding: EdgeInsets.all(4),
-          color: Colors.white,
-          margin: EdgeInsets.only(left: 8, right: 8, top: 8),
-          child: Text(
-            'Continue Watching',
-            style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+    return SingleChildScrollView(
+      child: ListView(
+        shrinkWrap: true,
+        children: [
+          Container(
+            width: double.infinity,
+            padding: EdgeInsets.all(4),
+            color: Colors.white,
+            margin: EdgeInsets.only(left: 8, right: 8, top: 8),
+            child: Text(
+              'Continue Watching',
+              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+            ),
           ),
-        ),
-        Container(
-          color: Colors.grey[400],
-          margin: EdgeInsets.only(left: 8, right: 8),
-          height: 160,
-          child: ListView.builder(
+          Container(
+            color: Colors.grey[400],
+            margin: EdgeInsets.only(left: 8, right: 8),
+            height: 160,
+            child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: 10,
               itemBuilder: (context, index) {
@@ -270,10 +270,10 @@ class CourseList extends StatelessWidget {
                   ),
                 );
               },
-              ),
-        ),
-      ],
-    ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

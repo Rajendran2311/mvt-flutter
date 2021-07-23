@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
-
 // ignore: camel_case_types
 class Podcast_Page extends StatefulWidget {
-  const Podcast_Page({ Key? key }) : super(key: key);
+  const Podcast_Page({Key? key}) : super(key: key);
 
   @override
   _Podcast_PageState createState() => _Podcast_PageState();
@@ -26,9 +25,10 @@ class _Podcast_PageState extends State<Podcast_Page> {
       //   iconTheme: IconThemeData(color: Colors.black),
       // ),
       // drawer: MainDrawer(),
-    
-      body: Center(child: Text('No data available'),),
-      
+
+      body: Center(
+        child: Text('No data available'),
+      ),
     );
   }
 }
