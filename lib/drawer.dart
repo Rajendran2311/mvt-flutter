@@ -44,12 +44,6 @@ class _MainDrawerState extends State<MainDrawer> {
             builder: (context) => MainPage(currentSelected: 3),
           ));
     }
-    if (currentTab == 4) {
-      Navigator.of(context).pop();
-      Navigator.of(context).push(MaterialPageRoute(
-        builder: (context) => MainPage(currentSelected: currentTab),
-      ));
-    }
   }
 
   @override
@@ -128,24 +122,6 @@ class _MainDrawerState extends State<MainDrawer> {
             onTap: () {
               CurrentTab(context, currentTab = 3);
             },
-          ),
-          ListTile(
-            leading: Icon(Icons.language),
-            title: Text(
-              'Language',
-              style: TextStyle(fontSize: 18),
-            ),
-            onTap: () {
-              CurrentTab(context, currentTab = 4);
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.settings),
-            title: Text(
-              'setting',
-              style: TextStyle(fontSize: 18),
-            ),
-            onTap: () {},
           ),
         ],
       ),
