@@ -7,11 +7,11 @@ void main() {
 
 // ignore: must_be_immutable
 class MyApp extends StatelessWidget {
-  late int currentTab = 0;
+  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: MainPage(currentTab: currentTab),
+      home: MainPage(currentSelected: 0),
       debugShowCheckedModeBanner: false,
     );
   }

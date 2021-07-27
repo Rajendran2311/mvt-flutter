@@ -5,31 +5,54 @@ import 'channels_page.dart';
 import 'interview_page.dart';
 import 'package:mvt/podcast_page.dart';
 
+// ignore: must_be_immutable
 class MainPage extends StatefulWidget {
-  const MainPage({Key? key, required int currentTab}) : super(key: key);
+  //late int currentTab ;
+  //late int index;
+  int currentSelected = 0;
+
+  MainPage({required this.currentSelected});
 
   @override
   _MainPageState createState() => _MainPageState();
 }
 
 class _MainPageState extends State<MainPage> {
-  int currentTab = 0;
-  // final List<Widget> screens = [
+  // late int currentTab=0;
+  // final PageStorageBucket bucket = PageStorageBucket();
+  // Widget currentScreen = Home_Page();
+  // List<Widget> _widgetOptions = <Widget>[
   //   Home_Page(),
-  //   Interview_Page(),
   //   Channels_Page(),
-  //   Podcast_Page(),
+  //   Interview_Page(),
+  //   Podcast_Page()
   // ];
-  
-  final PageStorageBucket bucket = PageStorageBucket();
-  Widget currentScreen = Home_Page();
+  int _currentSelected = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      widget.currentSelected = index;
+      _currentSelected = widget.currentSelected;
+      print("raj $_currentSelected");
+    });
+    print("rajjjannn $_currentSelected");
+  }
+
+  void initState() {
+    _onItemTapped(widget.currentSelected);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
           'MVT',
-          style: TextStyle(color: Colors.orange),
+          style: TextStyle(
+              color: Colors.orange,
+              fontSize: 30.0,
+              fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
         actions: [Icon(Icons.search, color: Colors.black)],
@@ -37,128 +60,75 @@ class _MainPageState extends State<MainPage> {
         iconTheme: IconThemeData(color: Colors.black),
       ),
       drawer: MainDrawer(),
-      body: PageStorage(bucket: bucket, child: currentScreen),
-      bottomNavigationBar: BottomAppBar(
-        shape: CircularNotchedRectangle(),
-        notchMargin: 10,
-        child: Container(
-          height: 60,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  MaterialButton(
-                    minWidth: 30,
-                    onPressed: () {
-                      setState(() {
-                        currentScreen = Home_Page();
-                        currentTab = 0;
-                      });
-                    },
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.home,
-                          color:
-                              currentTab == 0 ? Colors.orange : Colors.black45,
-                        ),
-                        Text(
-                          currentTab == 0 ? 'Home' : '',
-                          style: TextStyle(
-                              color: currentTab == 0
-                                  ? Colors.orange
-                                  : Colors.black45),
-                        )
-                      ],
-                    ),
-                  ),
-                  MaterialButton(
-                    minWidth: 30,
-                    onPressed: () {
-                      setState(() {
-                        currentScreen = Channels_Page();
-                        currentTab = 1;
-                      });
-                    },
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.tv,
-                          color:
-                              currentTab == 1 ? Colors.orange : Colors.black45,
-                        ),
-                        Text(
-                          currentTab == 1 ? 'Channels' : '',
-                          style: TextStyle(
-                              color: currentTab == 1
-                                  ? Colors.orange
-                                  : Colors.black45),
-                        )
-                      ],
-                    ),
-                  ),
-                  MaterialButton(
-                    minWidth: 30,
-                    onPressed: () {
-                      setState(() {
-                        currentScreen = Interview_Page();
-                        currentTab = 2;
-                      });
-                    },
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.monochrome_photos_outlined,
-                          color:
-                              currentTab == 2 ? Colors.orange : Colors.black45,
-                        ),
-                        Text(
-                          currentTab == 2 ? 'Interview' : '',
-                          style: TextStyle(
-                              color: currentTab == 2
-                                  ? Colors.orange
-                                  : Colors.black45),
-                        )
-                      ],
-                    ),
-                  ),
-                  MaterialButton(
-                    minWidth: 30,
-                    onPressed: () {
-                      setState(() {
-                        currentScreen = Podcast_Page();
-                        currentTab = 3;
-                      });
-                    },
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.mic,
-                          color:
-                              currentTab == 3 ? Colors.orange : Colors.black45,
-                        ),
-                        Text(
-                          currentTab == 3 ? 'Poacast' : '',
-                          style: TextStyle(
-                              color: currentTab == 3
-                                  ? Colors.orange
-                                  : Colors.black45),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
+      body: Scaffold(
+        body: IndexedStack(
+          index: widget.currentSelected,
+          children: [
+            for (final tabItem in TabNavigationItems.items) tabItem.page,
+          ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            // ignore: deprecated_member_use
+            title: Text('Home'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.tv),
+            // ignore: deprecated_member_use
+            title: Text('Channels'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.monochrome_photos_outlined),
+            // ignore: deprecated_member_use
+            title: Text('Interview'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.mic),
+            // ignore: deprecated_member_use
+            title: Text('podcast'),
+          ),
+        ],
+        onTap: _onItemTapped,
+        currentIndex: _currentSelected,
+        showUnselectedLabels: false,
+        unselectedItemColor: Colors.grey,
+        selectedItemColor: Colors.orange,
       ),
     );
   }
+}
+
+class TabNavigationItems {
+  final Widget page;
+  final Widget title;
+  final Icon icon;
+  TabNavigationItems(
+      {required this.page, required this.title, required this.icon});
+
+  static List<TabNavigationItems> get items => [
+        TabNavigationItems(
+          page: Home_Page(),
+          icon: Icon(Icons.home),
+          title: Text('Home'),
+        ),
+        TabNavigationItems(
+          page: Channels_Page(),
+          icon: Icon(Icons.tv),
+          title: Text('Channels'),
+        ),
+        TabNavigationItems(
+          page: Interview_Page(),
+          icon: Icon(Icons.monochrome_photos_outlined),
+          title: Text('Interview'),
+        ),
+        TabNavigationItems(
+          page: Podcast_Page(),
+          icon: Icon(Icons.mic),
+          title: Text('podcast'),
+        ),
+      ];
 }

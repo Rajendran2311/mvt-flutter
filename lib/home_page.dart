@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:mvt/video_player_details/album_videos.dart';
+
 
 import 'channels_details/album_songs.dart';
 import 'channels_details/award_show.dart';
@@ -13,6 +13,7 @@ import 'channels_details/short_stories.dart';
 // ignore: must_be_immutable
 class Home_Page extends StatelessWidget {
   Home_Page({Key? key}) : super(key: key);
+
   final List<String> imgList = [
     'https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80',
     'https://images.unsplash.com/photo-1522205408450-add114ad53fe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=368f45b0888aeb0b7b08e3a1084d3ede&auto=format&fit=crop&w=1950&q=80',
@@ -123,7 +124,7 @@ class MyList extends StatelessWidget {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => Album_Songs_List(index),
+          builder: (context) => Album_Songs_List(),
         ),
       );
     }
@@ -131,7 +132,7 @@ class MyList extends StatelessWidget {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => ShortStories_List(index),
+          builder: (context) => ShortStories_List(),
         ),
       );
     }
@@ -139,7 +140,7 @@ class MyList extends StatelessWidget {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => Award_Show(index),
+          builder: (context) => Award_Show(),
         ),
       );
     }
@@ -147,7 +148,7 @@ class MyList extends StatelessWidget {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => InterviewVideos(index),
+          builder: (context) => InterviewVideos(),
         ),
       );
     }
@@ -155,7 +156,7 @@ class MyList extends StatelessWidget {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => PadcastVideos(index),
+          builder: (context) => PadcastVideos(),
         ),
       );
     }
@@ -163,66 +164,86 @@ class MyList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: ListView(
-        shrinkWrap: true,
-        children: [
-          Container(
-            width: double.infinity,
-            padding: EdgeInsets.all(4),
-            color: Colors.white,
-            margin: EdgeInsets.only(left: 8, right: 8, top: 8),
-            child: Text(
-              'Channels',
-              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-            ),
+    return 
+    // ListView(
+    //   shrinkWrap: true,
+    //   children: [
+      Column(children: [
+        Container(
+          width: double.infinity,
+          padding: EdgeInsets.all(4),
+          color: Colors.white,
+          margin: EdgeInsets.only(left: 8, right: 8, top: 8),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Channels',
+                style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
+              ),
+              // ignore: deprecated_member_use
+              RaisedButton(
+                shape: StadiumBorder(),
+                color: Colors.orangeAccent,
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Album_Songs_List()),
+                  );
+                },
+                child: Text(
+                  'View All',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ],
           ),
-          Container(
-            color: Colors.white,
-            margin: EdgeInsets.only(left: 8, right: 8),
-            height: 160,
-            child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: list_of_videos.length,
-                itemBuilder: (context, index) {
-                  return Stack(
-                    alignment: Alignment.centerRight,
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          relatedvideo(context, index);
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.all(2.0),
-                          child: Card(
-                            color: Colors.black54,
-                            child: Column(
-                              children: [
-                                Image.network(
-                                  network_images[index % network_images.length],
-                                  width: 95,
-                                  height: 145,
-                                ),
-                              ],
-                            ),
+        ),
+        Container(
+          color: Colors.white,
+          margin: EdgeInsets.only(left: 8, right: 8),
+          height: 160,
+          child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: list_of_videos.length,
+              itemBuilder: (context, index) {
+                return Stack(
+                  alignment: Alignment.centerRight,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        relatedvideo(context, index);
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(2.0),
+                        child: Card(
+                          color: Colors.black54,
+                          child: Column(
+                            children: [
+                              Image.network(
+                                network_images[index % network_images.length],
+                                width: 95,
+                                height: 145,
+                              ),
+                            ],
                           ),
                         ),
                       ),
-                      Container(
-                        width: 90,
-                        child: Text(
-                          list_of_videos[index % list_of_videos.length],
-                          style: TextStyle(
-                              fontSize: 19, fontWeight: FontWeight.bold),
-                        ),
+                    ),
+                    Container(
+                      width: 90,
+                      child: Text(
+                        list_of_videos[index % list_of_videos.length],
+                        style: TextStyle(
+                            fontSize: 19, fontWeight: FontWeight.bold),
                       ),
-                    ],
-                  );
-                }),
-          ),
-          CourseList(),
-        ],
-      ),
+                    ),
+                  ],
+                );
+              }),
+        ),
+        CourseList(),
+      ],
     );
   }
 }
@@ -232,48 +253,67 @@ class CourseList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: ListView(
-        shrinkWrap: true,
-        children: [
-          Container(
-            width: double.infinity,
-            padding: EdgeInsets.all(4),
-            color: Colors.white,
-            margin: EdgeInsets.only(left: 8, right: 8, top: 8),
-            child: Text(
-              'Continue Watching',
-              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-            ),
+    return Column(
+    // ListView(
+    //   shrinkWrap: true,
+      children: [
+        Container(
+          width: double.infinity,
+          padding: EdgeInsets.all(4),
+          color: Colors.white,
+          margin: EdgeInsets.only(left: 8, right: 8, top: 8),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Continue Watching',
+                style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
+              ),
+              // ignore: deprecated_member_use
+              RaisedButton(
+                shape: StadiumBorder(),
+                color: Colors.orangeAccent,
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => InterviewVideos()),
+                  );
+                },
+                child: Text(
+                  'View All',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ],
           ),
-          Container(
-            color: Colors.grey[400],
-            margin: EdgeInsets.only(left: 8, right: 8),
-            height: 160,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: 10,
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.all(2.0),
-                  child: Card(
-                    color: Colors.white,
-                    child: Column(
-                      children: [
-                        Image.network(
-                          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5z8-3WshCsE_BWkuj0CSCR3MVTC1WsA8RfA&usqp=CAU',
-                          width: 100,
-                          height: 130,
-                        ),
-                      ],
-                    ),
+        ),
+        Container(
+          color: Colors.grey[400],
+          margin: EdgeInsets.only(left: 8, right: 8),
+          height: 160,
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: 10,
+            itemBuilder: (context, index) {
+              return Padding(
+                padding: const EdgeInsets.all(2.0),
+                child: Card(
+                  color: Colors.white,
+                  child: Column(
+                    children: [
+                      Image.network(
+                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5z8-3WshCsE_BWkuj0CSCR3MVTC1WsA8RfA&usqp=CAU',
+                        width: 100,
+                        height: 130,
+                      ),
+                    ],
                   ),
-                );
-              },
-            ),
+                ),
+              );
+            },
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

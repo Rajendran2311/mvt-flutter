@@ -4,7 +4,7 @@ import 'package:mvt/video_player_details/album_videos.dart';
 
 // ignore: camel_case_types
 class Award_Show extends StatefulWidget {
-  const Award_Show(param0, {Key? key}) : super(key: key);
+  const Award_Show( {Key? key}) : super(key: key);
 
   @override
   _Award_ShowState createState() => _Award_ShowState();

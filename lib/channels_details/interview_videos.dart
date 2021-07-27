@@ -5,7 +5,7 @@ import 'package:mvt/video_player_details/album_videos.dart';
 
 // ignore: must_be_immutable
 class InterviewVideos extends StatelessWidget {
-  InterviewVideos(index, {Key? key}) : super(key: key);
+  InterviewVideos( {Key? key}) : super(key: key);
 
   // ignore: non_constant_identifier_names
   final List<String> list_of_interviews = [

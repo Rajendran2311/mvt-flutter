@@ -129,7 +129,7 @@ class _Interview_PageState extends State<Interview_Page> {
                               Icon(
                                 Icons.play_arrow,
                                 color: Colors.white,
-                                size: 40.0,
+                                size: 40.0,   
                               ),
                             ],
                           )),
