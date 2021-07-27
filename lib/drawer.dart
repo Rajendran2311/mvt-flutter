@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'main_page.dart';
-import 'podcast_page.dart';
 
 class MainDrawer extends StatefulWidget {
   const MainDrawer({Key? key}) : super(key: key);
@@ -14,33 +13,45 @@ class _MainDrawerState extends State<MainDrawer> {
   int currentTab = 0;
   // ignore: non_constant_identifier_names
   void CurrentTab(BuildContext context, currentTab) {
-    if(currentTab==0){
-      Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => MainPage(currentTab: currentTab),
-                ));
+    if (currentTab == 0) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => MainPage(currentSelected: 0),
+        ),
+      );
     }
-     if(currentTab==1){
-      Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => MainPage(currentTab: currentTab),
-                ));
+    if (currentTab == 1) {
+      Navigator.of(context).pop();
+      Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => MainPage(currentSelected: 1),
+          ));
     }
-     if(currentTab==2){
-      Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => MainPage(currentTab: currentTab),
-                ));
+    if (currentTab == 2) {
+      Navigator.of(context).pop();
+      Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+              builder: (context) => MainPage(currentSelected: 2)));
     }
-     if(currentTab==3){
-      Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => MainPage(currentTab: currentTab),
-                ));
+    if (currentTab == 3) {
+      Navigator.of(context).pop();
+      Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => MainPage(currentSelected: 3),
+          ));
     }
-     if(currentTab==4){
+    if (currentTab == 4) {
+      Navigator.of(context).pop();
       Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => MainPage(currentTab: currentTab),
-                ));
+        builder: (context) => MainPage(currentSelected: currentTab),
+      ));
     }
-    
   }
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -85,7 +96,7 @@ class _MainDrawerState extends State<MainDrawer> {
               style: TextStyle(fontSize: 18),
             ),
             onTap: () {
-              CurrentTab(context, currentTab=0);
+              CurrentTab(context, currentTab = 0);
             },
           ),
           ListTile(
@@ -95,7 +106,7 @@ class _MainDrawerState extends State<MainDrawer> {
               style: TextStyle(fontSize: 18),
             ),
             onTap: () {
-              CurrentTab(context, currentTab=1);
+              CurrentTab(context, currentTab = 1);
             },
           ),
           ListTile(
@@ -105,8 +116,7 @@ class _MainDrawerState extends State<MainDrawer> {
               style: TextStyle(fontSize: 18),
             ),
             onTap: () {
-              
-                CurrentTab(context, currentTab=2);
+              CurrentTab(context, currentTab = 2);
             },
           ),
           ListTile(
@@ -116,7 +126,7 @@ class _MainDrawerState extends State<MainDrawer> {
               style: TextStyle(fontSize: 18),
             ),
             onTap: () {
-             CurrentTab(context, currentTab=3);
+              CurrentTab(context, currentTab = 3);
             },
           ),
           ListTile(
@@ -126,7 +136,7 @@ class _MainDrawerState extends State<MainDrawer> {
               style: TextStyle(fontSize: 18),
             ),
             onTap: () {
-              CurrentTab(context, currentTab=4);
+              CurrentTab(context, currentTab = 4);
             },
           ),
           ListTile(
@@ -136,7 +146,7 @@ class _MainDrawerState extends State<MainDrawer> {
               style: TextStyle(fontSize: 18),
             ),
             onTap: () {},
-          ), 
+          ),
         ],
       ),
     );

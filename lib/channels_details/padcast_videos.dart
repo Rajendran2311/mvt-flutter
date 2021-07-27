@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 
 class PadcastVideos extends StatelessWidget {
-  const PadcastVideos(index, { Key? key }) : super(key: key);
+  const PadcastVideos( { Key? key }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

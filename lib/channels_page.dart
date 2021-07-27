@@ -40,19 +40,19 @@ class _Channels_PageState extends State<Channels_Page> {
   var index;
   Function currentSlide = (index) {
     if (index == 0) {
-      return Album_Songs_List(index);
+      return Album_Songs_List();
     }
     if (index == 1) {
-      return ShortStories_List(index);
+      return ShortStories_List();
     }
     if (index == 2) {
-      return Award_Show(index);
+      return Award_Show();
     }
     if (index == 3) {
-      return InterviewVideos(index);
+      return InterviewVideos();
     }
     if (index == 4) {
-      return PadcastVideos(index);
+      return PadcastVideos();
     }
   };
   @override

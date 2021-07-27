@@ -4,7 +4,7 @@ import 'package:mvt/video_player_details/album_videos.dart';
 
 // ignore: camel_case_types
 class ShortStories_List extends StatefulWidget {
-  const ShortStories_List(index, {Key? key}) : super(key: key);
+  const ShortStories_List( {Key? key}) : super(key: key);
 
   @override
   _ShortStories_ListState createState() => _ShortStories_ListState();

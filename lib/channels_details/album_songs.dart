@@ -5,7 +5,7 @@ import 'package:mvt/video_player_details/album_videos.dart';
 
 // ignore: camel_case_types
 class Album_Songs_List extends StatefulWidget {
-  const Album_Songs_List(index, {Key? key}) : super(key: key);
+  const Album_Songs_List( {Key? key}) : super(key: key);
 
   @override
   _Album_Songs_ListState createState() => _Album_Songs_ListState();
